@@ -50,7 +50,7 @@ RUN set -eux; \
     echo 'prerouting="iptables -A PREROUTING -t nat -m addrtype ! --dst-type LOCAL -p tcp --dport 80 -j REDIRECT --to-port 3129"'; \
     echo 'output="${prerouting/PREROUTING/OUTPUT} -m owner ! --uid-owner squid"'; \
     echo; \
-    echo 'trap "${prerouting/-A/-D}; ${output/-A/-D}" TERM'; \
+    echo 'trap "${prerouting/-A/-D}; ${output/-A/-D}" EXIT'; \
     echo '$prerouting'; \
     echo '$output'; \
     echo; \
