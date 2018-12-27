@@ -1,14 +1,12 @@
 FROM frolvlad/alpine-glibc:alpine-3.8_glibc-2.28
 
-ARG version=0.16.51
-
 EXPOSE 34197/udp
 
 RUN set -eux; \
   apk add -q --no-cache wget; \
-  wget -qO factorio.tar.xz https://www.factorio.com/get-download/$version/headless/linux64; \
-  tar Jxf factorio.tar.xz; \
+  wget -qO factorio.tar.xz https://www.factorio.com/get-download/0.16.51/headless/linux64; \
   apk del -q wget; \
+  tar Jxf factorio.tar.xz; \
   rm -rf /var/cache/apk factorio.tar.xz
 
 VOLUME /factorio/saves
